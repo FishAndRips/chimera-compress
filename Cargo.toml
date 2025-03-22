@@ -1,0 +1,21 @@
+[package]
+name = "chimera-compress"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[features]
+std = []
+win32 = ["dep:min32", "dep:windows-sys"]
+default = ["std"]
+
+[dependencies]
+zstd-safe = "7.2.4"
+min32 = { version = "0.1.2", optional = true }
+windows-sys = { version = "0.59.0", default-features = false, features = ["Win32_Storage_FileSystem", "Win32_System_IO", "Win32_Security"], optional = true }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
